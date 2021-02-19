@@ -6,6 +6,7 @@
 ##
 
 SRC		=	sources/strlen.asm	\
+			sources/strchr.asm	\
 
 OBJ		=	$(SRC:%.asm=%.o)
 
@@ -21,9 +22,11 @@ LDFLAGS	=
 
 all: $(NAME)
 
-$(NAME):
-	$(AS) $(ASFLAGS) $(SRC)
-	$(LD) -o $(NAME) $(OBJ)
+%.o:	%.asm
+	$(AS) $(ASFLAGS) -o $@ $<
+
+$(NAME): $(OBJ)
+	$(LD) $(LDFLAGS) -o $(NAME) $(OBJ)
 
 clean:
 	$(RM) $(OBJ)
