@@ -5,7 +5,7 @@ SECTION .text
 GLOBAL strchr
 
 strchr:
-    MOV RAX, 0
+    XOR RAX, RAX
     CMP BYTE [RDI], 0
     JE .end
     CMP BYTE [RDI], SIL
