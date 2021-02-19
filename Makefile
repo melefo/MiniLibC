@@ -8,7 +8,8 @@
 SRC		=	sources/strlen.asm	\
 			sources/strchr.asm	\
 			sources/memset.asm	\
-			sources/memcpy.asm
+			sources/memcpy.asm	\
+			sources/strcmp.asm	\
 
 OBJ		=	$(SRC:%.asm=%.o)
 

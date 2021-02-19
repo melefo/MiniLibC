@@ -1,4 +1,5 @@
 libasm.so
 *.o
-a.out
+*a.out*
 *.c
+.vscode/
