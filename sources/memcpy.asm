@@ -17,8 +17,8 @@ memcpy:
     JE .end
     CMP RDX, 0
     JE .end
-    MOV R8B, BYTE [RSI]
-    MOV BYTE [RDI], R8B
+    MOV R10B, BYTE [RSI]
+    MOV BYTE [RDI], R10B
     DEC RDX
     INC RDI
     INC RSI
