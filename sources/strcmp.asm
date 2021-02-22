@@ -21,5 +21,4 @@ strcmp:
     MOVSX EAX, BYTE [RDI]
     MOVSX EDX, BYTE [RSI]
     SUB EAX, EDX
-.ret
     RET
