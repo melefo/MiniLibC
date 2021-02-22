@@ -3,3 +3,4 @@ libasm.so
 *a.out*
 *main*
 .vscode/
+unit_tests

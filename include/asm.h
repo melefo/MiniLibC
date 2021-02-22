@@ -12,5 +12,6 @@
 
 void init_tests(void);
 extern size_t (*asm_strlen)(const char *);
+extern char *(*asm_strchr)(const char *s, int c);
 
 #endif /* !ASM_H_ */

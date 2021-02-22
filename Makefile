@@ -17,6 +17,7 @@ OBJ		=	$(SRC:%.asm=%.o)
 
 TESTS	=	tests/init_criterion.c	\
 			tests/tests_strlen.c	\
+			tests/tests_strchr.c
 
 TESTSOBJ=	$(TESTS:%.c=%.o)
 
