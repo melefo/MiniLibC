@@ -10,15 +10,15 @@ memmove:
 .tmp:
     CMP R10, RDX
     JE .dest
-    MOVSX R9, BYTE [RSI + R10]
-    PUSH R9
+    MOVSX R8, BYTE [RSI + R10]
+    PUSH R8
     INC R10
     JMP .tmp
 .dest:
     CMP R10, 0
     JE .end
-    POP R9
-    MOV BYTE [RDI + R10], R9B
+    POP R8
+    MOV BYTE [RDI + R10 - 1], R8B
     DEC R10
     JMP .dest
 .end:
