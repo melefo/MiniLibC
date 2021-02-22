@@ -10,8 +10,7 @@ strlen:
     JE .end
 .loop:
     INC RAX
-    INC RDI
-    CMP BYTE [RDI], 0
+    CMP BYTE [RDI + RAX], 0
     JNE .loop
 .end:
     RET

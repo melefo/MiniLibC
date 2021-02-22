@@ -15,6 +15,11 @@ SRC		=	sources/strlen.asm	\
 
 OBJ		=	$(SRC:%.asm=%.o)
 
+TESTS	=	tests/init_criterion.c	\
+			tests/tests_strlen.c	\
+
+TESTSOBJ=	$(TESTS:%.c=%.o)
+
 NAME	=	libasm.so
 
 AS		=	nasm
@@ -23,7 +28,15 @@ ASFLAGS	=	-f elf64
 
 LD		=	ld
 
-LDFLAGS	=	
+LDFLAGS	=	-shared
+
+CC		=	gcc
+
+INCLUDE	=	-I include/
+
+CFLAGS	=	-W -Wall -Wextra -Wshadow $(INCLUDE)
+
+COVERAGE=	--coverage -lcriterion -ldl
 
 all: $(NAME)
 
@@ -33,12 +46,19 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	$(LD) $(LDFLAGS) -o $(NAME) $(OBJ)
 
+tests_run: all $(TESTSOBJ)
+	$(CC) -o unit_tests $(TESTSOBJ) $(COVERAGE) $(CFLAGS)
+	./unit_tests
+
 clean:
 	$(RM) $(OBJ)
+	$(RM) $(TESTSOBJ)
 
 fclean: clean
 	$(RM) $(NAME)
+	$(RM) unit_tests
+	$(RM) *.gc*
 
 re: fclean all
 
-.PHONY: re fclean clean all
+.PHONY: re fclean clean all tests_run
