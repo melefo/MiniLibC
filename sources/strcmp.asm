@@ -5,22 +5,21 @@ SECTION .text
 GLOBAL strcmp
 
 strcmp:
-    XOR AL, AL
-    CMP RDI, 0
-    JE .null
-    CMP RSI, 0
-    JE .null
+    XOR RAX, RAX
 .loop:
     MOV AL, BYTE [RSI]
     CMP BYTE [RDI], AL
     JNE .end
+    CMP BYTE [RDI], 0
+    JE .end
+    CMP BYTE [RSI], 0
+    JE .end
     INC RSI
     INC RDI
     JMP .loop
 .end:
-    MOV AL, BYTE [RDI]
-    SUB AL, BYTE [RSI]
-    RET
-.null:
-    MOV AL, 0
+    MOVSX EAX, BYTE [RDI]
+    MOVSX EDX, BYTE [RSI]
+    SUB EAX, EDX
+.ret
     RET

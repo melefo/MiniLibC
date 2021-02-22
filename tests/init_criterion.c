@@ -12,6 +12,7 @@ size_t (*asm_strlen)(const char *);
 char *(*asm_strchr)(const char *s, int c);
 void *(* asm_memset)(void *s, int c, unsigned long n);
 void *(* asm_memcpy)(void *dest, const void *src, size_t n);
+int (* asm_strcmp)(const char *s1, const char *s2);
 
 void init_tests(void)
 {
@@ -22,4 +23,5 @@ void init_tests(void)
     asm_strchr = dlsym(handle, "strchr");
     asm_memset = dlsym(handle, "memset");
     asm_memcpy = dlsym(handle, "memcpy");
+    asm_strcmp = dlsym(handle, "strcmp");
 }

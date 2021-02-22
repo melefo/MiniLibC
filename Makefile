@@ -19,7 +19,8 @@ TESTS	=	tests/init_criterion.c	\
 			tests/tests_strlen.c	\
 			tests/tests_strchr.c	\
 			tests/tests_memset.c	\
-			tests/tests_memcpy.c
+			tests/tests_memcpy.c	\
+			tests/tests_strcmp.c
 
 TESTSOBJ=	$(TESTS:%.c=%.o)
 
