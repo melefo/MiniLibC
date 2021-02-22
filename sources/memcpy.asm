@@ -8,13 +8,7 @@ memcpy:
     MOV RAX, RDI
     CMP RDI, 0
     JE .end
-    CMP RSI, 0
-    JE .end
 .loop:
-    CMP BYTE [RDI], 0
-    JE .end
-    CMP BYTE [RSI], 0
-    JE .end
     CMP RDX, 0
     JE .end
     MOV R10B, BYTE [RSI]
