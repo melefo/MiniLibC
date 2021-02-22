@@ -10,6 +10,7 @@
 
 size_t (*asm_strlen)(const char *);
 char *(*asm_strchr)(const char *s, int c);
+void *(* asm_memset)(void *s, int c, unsigned long n);
 
 void init_tests(void)
 {
@@ -18,4 +19,5 @@ void init_tests(void)
         return;
     asm_strlen = dlsym(handle, "strlen");
     asm_strchr = dlsym(handle, "strchr");
+    asm_memset = dlsym(handle, "memset");
 }
