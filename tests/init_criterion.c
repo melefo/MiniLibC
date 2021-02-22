@@ -15,6 +15,7 @@ void *(* asm_memcpy)(void *dest, const void *src, size_t n);
 int (* asm_strcmp)(const char *s1, const char *s2);
 void *(* asm_memmove)(void *dest, const void *src, size_t n);
 int (* asm_strncmp)(const char *s1, const char *s2, size_t n);
+int (* asm_strcasecmp)(const char *s1, const char *s2);
 
 void init_tests(void)
 {
@@ -28,4 +29,5 @@ void init_tests(void)
     asm_strcmp = dlsym(handle, "strcmp");
     asm_memmove = dlsym(handle, "memmove");
     asm_strncmp = dlsym(handle, "strncmp");
+    asm_strcasecmp = dlsym(handle, "strcasecmp");
 }

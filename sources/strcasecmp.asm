@@ -5,46 +5,35 @@ SECTION .text
 GLOBAL strcasecmp
 
 strcasecmp:
-    XOR AL, AL
-    CMP RDI, 0
-    JE .null
-    CMP RSI, 0
-    JE .null
-.rdi: ; first param to lower
-    CMP BYTE [RDI + AL], 0
-    JE .end
-    CMP BYTE [RDI + AL], 'A'
-    JL .rdiEnd
-    CMP BYTE [RDI + AL], 'Z'
-    JG .rdiEnd
-    ADD BYTE [RDI + AL], ' '
-.rdiEnd:
-    INC AL
-    JMP .rdi
-    XOR AL, AL
-.rsi: ; second param to lower
-    CMP BYTE [RSI + AL], 0
-    JE .end
-    CMP BYTE [RSI + AL], 'A'
-    JL .rsiEnd
-    CMP BYTE [RSI + AL], 'Z'
-    JG .rsiEnd
-    ADD BYTE [RSI + AL], ' '
-.rsiEnd:
-    INC AL
-    JMP .rsi
-    XOR AL, AL
+    XOR RAX, RAX
 .loop:
-    MOV AL, BYTE [RSI]
-    CMP BYTE [RDI], AL
+    MOV AL, BYTE [RDI]
+    MOV DL, BYTE [RSI]
+.rdi:
+    CMP AL, 'A'
+    JL .rsi
+    CMP AL, 'Z'
+    JG .rsi
+    ADD AL, 'a' - 'A'
+.rsi:
+    CMP DL, 'A'
+    JL .cmp
+    CMP DL, 'Z'
+    JG .cmp
+    ADD DL, 'a' - 'A'
+.cmp:
+    CMP AL, DL
     JNE .end
+    CMP BYTE [RDI], 0
+    JE .end
+    CMP BYTE [RSI], 0
+    JE .end
     INC RSI
     INC RDI
     JMP .loop
+
 .end:
-    MOV AL, BYTE [RDI]
-    SUB AL, BYTE [RSI]
-    RET
-.null:
-    MOV AL, 0
+    MOVSX EAX, BYTE [RDI]
+    MOVSX EDX, BYTE [RSI]
+    SUB EAX, EDX
     RET
