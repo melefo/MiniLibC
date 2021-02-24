@@ -5,14 +5,15 @@
 ## Makefile
 ##
 
-SRC		=	sources/strlen.asm	\
-			sources/strchr.asm	\
-			sources/memset.asm	\
-			sources/memcpy.asm	\
-			sources/strcmp.asm	\
-			sources/memmove.asm	\
-			sources/strncmp.asm	\
-			sources/strcasecmp.asm
+SRC		=	sources/strlen.asm		\
+			sources/strchr.asm		\
+			sources/memset.asm		\
+			sources/memcpy.asm		\
+			sources/strcmp.asm		\
+			sources/memmove.asm		\
+			sources/strncmp.asm		\
+			sources/strcasecmp.asm	\
+			sources/rindex.asm
 
 OBJ		=	$(SRC:%.asm=%.o)
 
@@ -24,7 +25,8 @@ TESTS	=	tests/init_criterion.c	\
 			tests/tests_strcmp.c	\
 			tests/tests_memmove.c	\
 			tests/tests_strncmp.c	\
-			tests/tests_strcasecmp.c
+			tests/tests_strcasecmp.c\
+			tests/tests_rindex.c
 
 TESTSOBJ=	$(TESTS:%.c=%.o)
 
