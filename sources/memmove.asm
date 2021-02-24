@@ -18,8 +18,8 @@ memmove:
     CMP R10, 0
     JE .end
     POP R8
-    MOV BYTE [RDI + R10 - 1], R8B
     DEC R10
+    MOV BYTE [RDI + R10], R8B
     JMP .dest
 .end:
     RET
