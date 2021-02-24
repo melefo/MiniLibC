@@ -3,7 +3,9 @@ BITS 64
 SECTION .text
 
 GLOBAL strlen
+GLOBAL _strlen:function hidden
 
+_strlen:
 strlen:
     XOR RAX, RAX
     CMP BYTE [RDI], 0

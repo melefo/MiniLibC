@@ -19,6 +19,7 @@ int (* asm_strcasecmp)(const char *s1, const char *s2);
 char *(* asm_rindex)(const char *s, int c);
 char *(* asm_strstr)(const char *haystack, const char *needle);
 char *(* asm_strpbrk)(const char *s, const char *accept);
+size_t (* asm_strcspn)(const char *s, const char *reject);
 
 void init_tests(void)
 {
@@ -36,4 +37,5 @@ void init_tests(void)
     asm_rindex = dlsym(handle, "rindex");
     asm_strstr = dlsym(handle, "strstr");
     asm_strpbrk = dlsym(handle, "strpbrk");
+    asm_strcspn = dlsym(handle, "strcspn");
 }
