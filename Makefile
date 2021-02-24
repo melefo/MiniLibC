@@ -14,7 +14,8 @@ SRC		=	sources/strlen.asm		\
 			sources/strncmp.asm		\
 			sources/strcasecmp.asm	\
 			sources/rindex.asm		\
-			sources/strstr.asm
+			sources/strstr.asm		\
+			sources/strpbrk.asm
 
 OBJ		=	$(SRC:%.asm=%.o)
 
@@ -28,7 +29,8 @@ TESTS	=	tests/init_criterion.c	\
 			tests/tests_strncmp.c	\
 			tests/tests_strcasecmp.c\
 			tests/tests_rindex.c	\
-			tests/tests_strstr.c
+			tests/tests_strstr.c	\
+			tests/tests_strpbrk.c
 
 TESTSOBJ=	$(TESTS:%.c=%.o)
 
