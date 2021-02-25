@@ -15,6 +15,27 @@ Test(strchr, basic, .init = init_tests)
     cr_assert_eq(strchr(str, 'W'), asm_strchr(str, 'W'));
 }
 
+Test(strchr, first, .init = init_tests)
+{
+    char *str = "Hello World!\n";
+
+    cr_assert_eq(strchr(str, 'H'), asm_strchr(str, 'H'));
+}
+
+Test(strchr, last, .init = init_tests)
+{
+    char *str = "Hello World!\n";
+
+    cr_assert_eq(strchr(str, '\n'), asm_strchr(str, '\n'));
+}
+
+Test(strchr, zero, .init = init_tests)
+{
+    char *str = "Hello World!\n";
+
+    cr_assert_eq(strchr(str, '\0'), asm_strchr(str, '\0'));
+}
+
 Test(strchr, not, .init = init_tests)
 {
     char *str = "Hello World!\n";

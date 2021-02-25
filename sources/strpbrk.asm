@@ -6,7 +6,7 @@ GLOBAL strpbrk
 GLOBAL _strpbrk:function hidden
 EXTERN _strchr
 
-_strpbrk
+_strpbrk:
 strpbrk:
     XOR RAX, RAX
     XOR R10, R10

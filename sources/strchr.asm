@@ -8,16 +8,13 @@ GLOBAL _strchr:function hidden
 _strchr:
 strchr:
     XOR RAX, RAX
-    CMP BYTE [RDI], 0
-    JE .end
+.loop:
     CMP BYTE [RDI], SIL
     JE .set
-.loop:
-    INC RDI
     CMP BYTE [RDI], 0
     JE .end
-    CMP BYTE [RDI], SIL
-    JNE .loop
+    INC RDI
+    JMP .loop
 .set:
     MOV RAX, RDI
 .end:
