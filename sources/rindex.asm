@@ -7,6 +7,8 @@ GLOBAL rindex
 rindex:
     XOR RAX, RAX
     XOR RDX, RDX
+    CMP SIL, 0
+    JMP .cmp
     CMP BYTE [RDI], 0
     JE .end
     JMP .cmp

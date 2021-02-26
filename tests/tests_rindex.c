@@ -42,3 +42,10 @@ Test(rindex, empty, .init = init_tests)
 
     cr_assert_eq(rindex(str, 'W'), asm_rindex(str, 'W'));
 }
+
+Test(rindex, empty_zero, .init = init_tests)
+{
+    char *str = "";
+
+    cr_assert_eq(rindex(str, '\0'), asm_rindex(str, '\0'));
+}
