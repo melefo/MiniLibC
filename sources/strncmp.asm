@@ -11,6 +11,10 @@ strncmp:
 .loop:
     CMP RDX, 0
     JE .end
+    CMP BYTE [RDI], 0
+    JE .end
+    CMP BYTE [RSI], 0
+    JE .end
     MOV AL, BYTE [RSI]
     CMP BYTE [RDI], AL
     JNE .end

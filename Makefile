@@ -62,6 +62,9 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	$(LD) $(LDFLAGS) -o $(NAME) $(OBJ)
 
+dbg: ASFLAGS += -g
+dbg: re
+
 tests_run: all $(TESTSOBJ)
 	$(CC) -o unit_tests $(TESTSOBJ) $(COVERAGE) $(CFLAGS)
 	./unit_tests

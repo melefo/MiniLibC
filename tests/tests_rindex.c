@@ -29,6 +29,13 @@ Test(rindex, multiple, .init = init_tests)
     cr_assert_eq(rindex(str, 'W'), asm_rindex(str, 'W'));
 }
 
+Test(rindex, zero, .init = init_tests)
+{
+    char *str = "Wello World!\n";
+
+    cr_assert_eq(rindex(str, '\0'), asm_rindex(str, '\0'));
+}
+
 Test(rindex, empty, .init = init_tests)
 {
     char *str = "";
