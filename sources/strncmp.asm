@@ -8,9 +8,6 @@ strncmp:
     XOR RAX, RAX
     CMP RDX, 0
     JE .ret
-.loop:
-    CMP RDX, 0
-    JE .end
     CMP BYTE [RDI], 0
     JE .end
     CMP BYTE [RSI], 0
@@ -21,7 +18,7 @@ strncmp:
     INC RSI
     INC RDI
     DEC RDX
-    JMP .loop
+    JMP strncmp
 .end:
     MOVSX EAX, BYTE [RDI]
     MOVSX EDX, BYTE [RSI]

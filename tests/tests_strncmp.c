@@ -71,3 +71,11 @@ Test(strncmp, negativ, .init = init_tests)
 
     cr_assert_eq(strncmp(str, str2, (size_t)-1), asm_strncmp(str, str2, (size_t)-1));
 }
+
+Test(strncmp, different_on_stop, .init = init_tests)
+{
+    char *str = "Hello";
+    char *str2 = "Hello";
+
+    cr_assert_eq(strncmp(str, str2, 1), asm_strncmp(str, str2, 1));
+}
